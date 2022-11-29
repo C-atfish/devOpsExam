@@ -1,10 +1,7 @@
 # Jim; I'm giving up on this docker thing. It just fails ,and I've spent about six weeks on this...
 name: Docker build
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
