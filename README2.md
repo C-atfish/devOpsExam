@@ -5,3 +5,6 @@ Men når jeg fjernet setup av SDK og build med maven så sluttet workflowen å k
 Jeg misstenker at det var provided feil path i "file" (det var ./Dockerfile) med context "."
 Når jeg bare fjernet path vairablen regner jeg med den bruker default, og da kjører docker
 workflowen mye ryddigere uten unødvendige steg.
+
+
+TEST CHANGE
