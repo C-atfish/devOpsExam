@@ -29,3 +29,5 @@ Så endret jeg slik at docker kan kjøres manuelt om ønskelig, men den pusher t
 
 For å pushe til et annet ECR repo, trengs det bare å gå til "ECR" på AWS, inn på ditt repo
 Der står det build commands for å replace bunnen av ecr.yml
+
+Videre har jeg lagt til commit hash som tag til ecr.
