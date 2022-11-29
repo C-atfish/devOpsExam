@@ -1,4 +1,4 @@
-name: Docker build
+name: ECR Build
 on:
   push:
     branches: [ master ]
