@@ -21,3 +21,9 @@ Jeg misstenker at det var provided feil path i "file" (det var ./Dockerfile) med
 Når jeg bare fjernet path vairablen regner jeg med den bruker default, og da kjører docker
 workflowen mye ryddigere uten unødvendige steg.
 
+### Oppgave 3
+
+Jeg lagde en ny workflow for å pushe til ECR istedenfor å slette docker workflowne.
+Se workflows/ecr.yml
+Så endret jeg slik at docker kan kjøres manuelt om ønskelig, men den pusher til ECR under push og pull til main
+
