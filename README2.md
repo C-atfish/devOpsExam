@@ -31,3 +31,16 @@ For å pushe til et annet ECR repo, trengs det bare å gå til "ECR" på AWS, in
 Der står det build commands for å replace bunnen av ecr.yml
 
 Videre har jeg lagt til commit hash som tag til ecr.
+
+## Del 4
+
+### Oppgave 2
+
+Jeg prøvde en del forskjellige ting for å forstå CloudWatch bedre, som gjorde at jeg endte opp med veldig mange
+"test metrics" som ikke er i bruk lengre.
+De relevante metricene heter:
+- carts_checked_out
+- number_of_active_carts
+- carts_value
+
+ligger også timer metric i "class, exception, method"

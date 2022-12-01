@@ -1,18 +1,30 @@
 package no.shoppifly;
 
+import io.micrometer.core.annotation.Timed;
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController()
-public class ShoppingCartController {
+public class ShoppingCartController{
+
+
+    private MeterRegistry meterRegistry;
+
 
     @Autowired
     private final CartService cartService;
 
-    public ShoppingCartController(CartService cartService) {
+    @Autowired
+    public ShoppingCartController(CartService cartService, MeterRegistry meterRegistry) {
         this.cartService = cartService;
+        this.meterRegistry = meterRegistry;
     }
 
     @GetMapping(path = "/cart/{id}")
@@ -25,6 +37,7 @@ public class ShoppingCartController {
      *
      * @return an order ID
      */
+    @Timed
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
         return cartService.checkout(cart);
@@ -36,6 +49,8 @@ public class ShoppingCartController {
      *
      * @return the updated cart
      */
+
+
     @PostMapping(path = "/cart")
     public Cart updateCart(@RequestBody Cart cart) {
         return cartService.update(cart);
@@ -48,8 +63,14 @@ public class ShoppingCartController {
      */
     @GetMapping(path = "/carts")
     public List<String> getAllCarts() {
-        return cartService.getAllsCarts();
+
+         List<String> cartList = cartService.getAllsCarts();
+
+
+        return cartList;
     }
+
+
 
 
 }
