@@ -50,3 +50,5 @@ bucket del 5
 
 babe change resource to data
 
+
+something something the bucket was not added to the terraform state file
