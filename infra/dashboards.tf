@@ -40,8 +40,7 @@ resource "aws_cloudwatch_dashboard" "main" {
         "stat": "Maximum",
         "region": "eu-west-1",
         "title": "Total number of current carts",
-        "view": "singleValue",
-        "legend": {"position": "right"}
+        "view": "singleValue"
       }
     },
 {
