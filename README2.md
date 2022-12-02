@@ -44,3 +44,9 @@ De relevante metricene heter:
 - carts_value
 
 ligger også timer metric i "class, exception, method"
+
+
+bucket del 5
+
+babe change resource to data
+
