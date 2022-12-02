@@ -58,8 +58,27 @@ resource "aws_cloudwatch_dashboard" "main" {
         "period": 300,
         "stat": "Maximum",
         "region": "eu-west-1",
-        "title": "Total sum of all the carts",
+        "title": "Current total sum of all carts",
         "view": "singleValue"
+      }
+    },
+{
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 9,
+      "properties": {
+        "metrics": [
+          [
+            "${var.candidate_id}",
+            "carts_value.value"
+          ]
+        ],
+        "period": 300,
+        "stat": "Maximum",
+        "region": "eu-west-1",
+        "title": "Total sum of all the carts"
       }
     },
 {
