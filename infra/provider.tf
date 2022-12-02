@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "analytics-1023"
-    key    = "/state/terraform.state"
+    key    = "config/terraform.state"
     region = "eu-north-1"
   }
 }
