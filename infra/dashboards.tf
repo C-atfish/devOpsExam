@@ -60,6 +60,25 @@ resource "aws_cloudwatch_dashboard" "main" {
         "region": "eu-west-1",
         "title": "Total sum of all the carts"
       }
+    },
+{
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 9,
+      "properties": {
+        "metrics": [
+          [
+            "${var.candidate_id}",
+            "method.times.avg"
+          ]
+        ],
+        "period": 300,
+        "stat": "Maximum",
+        "region": "eu-west-1",
+        "title": "Average response time for checkout"
+      }
     }
   ]
 }
