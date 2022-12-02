@@ -7,4 +7,3 @@ Når jeg bare fjernet path vairablen regner jeg med den bruker default, og da kj
 workflowen mye ryddigere uten unødvendige steg.
 
 
-TEST CHANGE
