@@ -1,5 +1,5 @@
 # Jim; I'm giving up on this docker thing. It just fails ,and I've spent about six weeks on this...
-name: Docker build
+name: Docker Hub build
 on:
   workflow_dispatch:
 jobs:
