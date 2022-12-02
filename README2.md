@@ -61,3 +61,4 @@ This got fixed by importing the bucket with terraform CLI:
 terraform import aws_s3_bucket.analyticsbucket analytics-1023
 ```
 
+ok
