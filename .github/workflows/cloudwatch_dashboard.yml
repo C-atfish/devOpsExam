@@ -27,7 +27,7 @@ jobs:
 
       - name: Import Bucket
         id: import
-        run: terraform import aws_s3_bucket.bucket analytics-1023
+        run: terraform import aws_s3_bucket.analyticsbucket analytics-1023
 
       - name: Terraform Plan
         id: plan
