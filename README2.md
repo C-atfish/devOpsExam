@@ -46,9 +46,18 @@ De relevante metricene heter:
 ligger også timer metric i "class, exception, method"
 
 
-bucket del 5
+## del 5
 
 babe change resource to data
 
 
+### Oppgave 1
+
 something something the bucket was not added to the terraform state file
+It tried to create it over and over because it did not have a backend to save fetch info
+This got fixed by importing the bucket with terraform CLI: 
+
+```
+terraform import aws_s3_bucket.analyticsbucket analytics-1023
+```
+
