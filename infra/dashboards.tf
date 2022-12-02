@@ -71,7 +71,7 @@ resource "aws_cloudwatch_dashboard" "main" {
         "metrics": [
           [
             "${var.candidate_id}",
-            "method.times.avg"
+            "method.timed.avg"
           ]
         ],
         "period": 300,
