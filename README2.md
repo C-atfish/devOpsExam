@@ -43,13 +43,10 @@ De relevante metricene heter:
 - number_of_active_carts
 - carts_value
 
-ligger også timer metric i "class, exception, method"
+ligger også timer metric i "class, exception, method", men de viser ikke data i dashbordet
 
 
 ## del 5
-
-babe change resource to data
-
 
 ### Oppgave 1
 
@@ -60,5 +57,3 @@ This got fixed by importing the bucket with terraform CLI:
 ```
 terraform import aws_s3_bucket.analyticsbucket analytics-1023
 ```
-
-ok
