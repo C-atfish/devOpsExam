@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
 
   statistic                 = "Maximum"
 
-  alarm_description         = "This alarm goes off as soon as the total amount of money in the bank exceeds 0 "
+  alarm_description         = "This alarm goes off as soon as there are more than 5 carts in 15 minutes "
   insufficient_data_actions = []
   alarm_actions       = [aws_sns_topic.alarms.arn]
 }
