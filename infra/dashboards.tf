@@ -111,7 +111,6 @@ resource "aws_cloudwatch_dashboard" "main" {
         "metrics": [
           [
             "${var.candidate_id}",
-            "class, exception, method",
             "method.timed.avg"
           ]
         ],
