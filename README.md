@@ -16,7 +16,7 @@ Bonusoppgave:
 
 ### Oppgave 3
 
-For å 
+For å
 1: Forhindre at noen skal klare å pushe kode direkte til Main Branchen,
 2: Bare merge feature branch om status checks har passed
 3: For å merge til main med en pull request som krever minst en godkjenning, kan man gå til:
@@ -24,13 +24,13 @@ For å
 Github Repo -> Settings -> Branches 
 -> Add Branch Protection Rule -> Legg til Main(Master) Branchen 
 -> Under "Protect matching branches" så sjekker du av kommende bokser:
-[X] Require Pull Request before Merging
-        [X] Require Approvals
+-[X] Require Pull Request before Merging
+ -       [X] Require Approvals
             - Required number of approvals before merging: > 0
-[X] Require status checks to pass before merging
+-[X] Require status checks to pass before merging
 
 
-## del 3: 
+## Del 3: 
 
 ### Oppgave 1:
 
