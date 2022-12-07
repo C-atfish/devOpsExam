@@ -16,16 +16,18 @@ Bonusoppgave:
 
 ### Oppgave 3
 
-For å 1: Forhindre at noen skal klare å pushe kode direkte til Main Branchen,
-      2: Bare merge feature branch om status checks har passed
-      3: For å merge til main med en pull request som krever minst en godkjenning, kan man gå til:
+For å 
+1: Forhindre at noen skal klare å pushe kode direkte til Main Branchen,
+2: Bare merge feature branch om status checks har passed
+3: For å merge til main med en pull request som krever minst en godkjenning, kan man gå til:
 
-Github Repo -> Settings -> Branches -> Add Branch Protection Rule -> Legg til Main(Master) Branchen 
+Github Repo -> Settings -> Branches 
+-> Add Branch Protection Rule -> Legg til Main(Master) Branchen 
 -> Under "Protect matching branches" så sjekker du av kommende bokser:
-- Require Pull Request before Merging
-        - Require Approvals
+[X] Require Pull Request before Merging
+        [X] Require Approvals
             - Required number of approvals before merging: > 0
-- Require status checks to pass before merging
+[X] Require status checks to pass before merging
 
 
 ## del 3: 
@@ -36,7 +38,7 @@ Det jeg måtte gjøre for å få workflowen til å fungere:
 1: Siden min hovedbranch heter master og ikke main, måtte jeg endre restriksjonene for event i docker.yml
 2: Legge til docker konto i github repository secrets
 
-grunnen til at workflowen feilet:
+Grunnen til at workflowen feilet:
 Den feilet fordi den ikke klarte å logge inn/Fant ikke noen DockerHub Konto i Secrets.
 
 ### Oppgave 2:
