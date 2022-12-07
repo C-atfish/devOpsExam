@@ -24,9 +24,9 @@ For å
 Github Repo -> Settings -> Branches 
 -> Add Branch Protection Rule -> Legg til Main(Master) Branchen 
 -> Under "Protect matching branches" så sjekker du av kommende bokser:
--[X] Require Pull Request before Merging
- -       [X] Require Approvals
-            - Required number of approvals before merging: > 0
+- [X] Require Pull Request before Merging
+-       [X] Require Approvals
+           - Required number of approvals before merging: > 0
 -[X] Require status checks to pass before merging
 
 
