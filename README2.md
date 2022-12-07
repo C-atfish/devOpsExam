@@ -43,7 +43,9 @@ De relevante metricene heter:
 - number_of_active_carts
 - carts_value
 
-ligger også timer metric i "class, exception, method", men de viser ikke data i dashbordet
+Det ligger også timer metric for checkout i "class, exception, method", men jeg klarer ikke referere til den metricen i terraform
+på samme måte som jeg gjør med de andre metricene. Så eneste måten jeg fikk data for Timeren
+i dashboardet var å legge den til manuelt med GUI.
 
 
 ## del 5
