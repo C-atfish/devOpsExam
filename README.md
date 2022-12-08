@@ -48,8 +48,8 @@ Det å ha ansvar på hele prosessen fra start til slutt ender da med å jobbe ek
 
 4: Det å release kode ofte kan by på utfordringer om ikke pipelinen er god nok. For at dette skal fungere bra så må det være
 få overleveringer av koden, god struktur på arbeidsflyten og ett godt versions kontroll system satt opp som tar seg av bracnhes og workkflow.
-Det er viktig at release branchen alltid er i en fungerende state, så det må være ett kvalitets system med automatiske tester som fjerner 
-muligheten til å pushe ødelagt kode så godt som mulig til release.
+Det er viktig at release branchen alltid er i en fungerende state, så det må være ett kvalitets system med automatiske tester og pull requester
+som fjerner muligheten til å pushe ødelagt kode så godt som mulig til release.
 
 ## Del 2
 
