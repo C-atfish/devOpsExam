@@ -1,16 +1,55 @@
 # EksamensBesvarelse
 
-Bonusoppgave:
+Bonusoppgave: Jeg har ikke brukt Cloud9 til utvikling, så jeg har ikke fått denne feilmeldingen selv, men etter litt
+undersøking så tror jeg årsaken er:
 
 ## Del 1
 1: Hva er utfordringene med dagens systemutviklingsprosess - og hvordan vil innføring av DevOps kunne være med 
    på å løse disse? Hvilke DevOps prinsipper blir brutt? 
-2: En vanlig respons på mange feil under release av ny funksjonalitet er å gjøre det mindre hyppig, og samtidig 
-   forsøke å legge på mer kontroll og QA. Hva er problemet med dette ut ifra et DevOps perspektiv, og hva kan være en bedre tilnærming?
+
+2: En vanlig respons på mange feil under release av ny funksjonalitet er å gjøre det mindre hyppig, og samtidig
+forsøke å legge på mer kontroll og QA. Hva er problemet med dette ut ifra et DevOps perspektiv, og hva kan være en bedre tilnærming?
+
+1 og 2:
+Utfordringen med nåværende utviklingprosess er at frekvensen på deployments er veldig lav. Med veldig lite kvalitetssikring og mye waste.
+De har en lang prosess både på å bygge prosjektet, manuelt teste det, og unødvendige steg rundt å sende det til en egen avdeling, 
+som deretter manuelt deployer på AWS.
+
+Denne prosessen fører til veldig sjelden utrulling av ny funksjonalitet, og krever at alle er ferdig med oppgaven sin feilfritt innen
+første mandagen i kvartalet, ellers blir deployment forsinket eller funksjonaliteten må vente til neste kvartal. 
+
+Om man sammenligner det med motparten som er å Devopsifye det til å ha en hyppigere frekvens på deployments med automatiske tester. 
+Man kan sette opp en Release branch som man kan pushe til flere ganger om dagen, med restriksjoner i Workflowen som bare godtar pushes
+om de automatiske testene har kjørt grønnt. På denne måten kan man oppdatere med mer begrenset oppgavestørrelse så fort man er ferdig
+med oppgaven eller når de skulle ønske selv.
+
+Dette vil spare masse tid og penger for bedriften, det vil være en mye høyere terskel for kvalitets-sikring når vi kan ha kontroll på koden
+i workflowen. Skulle bugs eventuelt oppstå så kan men lett rulle tilbake og fikse problemet, og release det igjen med en gang.
+Brukere vil få en mye bedre opplevelse, med oftere forbedret funksjonalitet i løsningen.
+
+Ved å automatisere tester og legge opp en bedre arbeidsflyt, vil vi fjerne den falske tryggheten man kan få av manuelle tester.
+Det vil skape en mye bedre flyt i prosessen, hvor resultatet har fjernet masse waste rundt venting på teams, færre context switches og
+mindre venting på delvis fullført arbeid. Det vil overføre mye av OPS ansvaret til utviklerene, som fører til færre overleveringer
+av koden fra start til slutt.
+
+
+
 3: Teamet overleverer kode til en annen avdelng som har ansvar for drift - hva er utfordringen med dette ut ifra et DevOps perspektiv, 
    og hvilke gevinster kan man få ved at team han ansvar for både drift- og utvikling?
+
+3:
+Om utvikleren har ansvar for både drift og utvikling vil man fjerne skillet mellom disse. Tid er veldig verdifult, og det å ha unødvendige 
+overleveringer vil føre til mye bortkastet tid. Ett team kan sitte å måtte vente på at de andre må bli ferdig med en oppgave og lignende.
+Det å ha ansvar på hele prosessen fra start til slutt ender da med å jobbe ekstremt effektivt.
+
+
 4: Å release kode ofte kan også by på utfordringer. Beskriv hvilke- og hvordan vi kan bruke DevOps prinsipper til å redusere eller
    fjerne risiko ved hyppige leveraner
+
+4: Det å release kode ofte kan by på utfordringer om ikke pipelinen er god nok. For at dette skal fungere bra så må det være
+få overleveringer av koden, god struktur på arbeidsflyten og ett godt versions kontroll system satt opp som tar seg av bracnhes og workkflow.
+Det er viktig at release branchen alltid er i en fungerende state, så det må være ett kvalitets system med automatiske tester som fjerner 
+muligheten til å pushe ødelagt kode så godt som mulig til release.
 
 ## Del 2
 
@@ -77,7 +116,7 @@ De relevante metricene heter:
 - number_of_active_carts
 - carts_value
 
-## del 5
+## Del 5
 
 ### Oppgave 1
 
