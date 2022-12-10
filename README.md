@@ -1,7 +1,7 @@
 # EksamensBesvarelse
 
 Bonusoppgave: Jeg har ikke brukt Cloud9 til utvikling, så jeg har ikke fått denne feilmeldingen selv, men etter litt
-undersøking så tror jeg årsaken er:
+undersøking, kan det virke som årsaken er at den ikke har lastet ned Lombbok eller eventuelt refreshet pom.xml
 
 ## Del 1
 1: Hva er utfordringene med dagens systemutviklingsprosess - og hvordan vil innføring av DevOps kunne være med 
@@ -12,25 +12,26 @@ forsøke å legge på mer kontroll og QA. Hva er problemet med dette ut ifra et 
 
 1 og 2:
 Utfordringen med nåværende utviklingprosess er at frekvensen på deployments er veldig lav. Med veldig lite kvalitetssikring og mye waste.
-De har en lang prosess både på å bygge prosjektet, manuelt teste det, og unødvendige steg rundt å sende det til en egen avdeling, 
-som deretter manuelt deployer på AWS.
+De har en lang prosess både på å bygge prosjektet, manuelt teste det, og unødvendige steg rundt overleveringer til egene avdelinger, 
+som deretter manuelt deployer og vedlikeholder.
 
-Denne prosessen fører til veldig sjelden utrulling av ny funksjonalitet, og krever at alle er ferdig med oppgaven sin feilfritt innen
-første mandagen i kvartalet, ellers blir deployment forsinket eller funksjonaliteten må vente til neste kvartal. 
+Denne prosessen kan føre til veldig sjelden utrulling av ny funksjonalitet, og krever at alle er ferdig med oppgaven sin feilfritt innen
+planlagt utrullings tid, ellers blir oppdaterigen  i beste fall forsinket eller funksjonaliteten må vente til neste utrulling, eller i værste
+fall all funksjonalitet må rulles tilbake og kan bli kraftig forsinket.
 
 Om man sammenligner det med motparten som er å Devopsifye det til å ha en hyppigere frekvens på deployments med automatiske tester. 
 Man kan sette opp en Release branch som man kan pushe til flere ganger om dagen, med restriksjoner i Workflowen som bare godtar pushes
-om de automatiske testene har kjørt grønnt. På denne måten kan man oppdatere med mer begrenset oppgavestørrelse så fort man er ferdig
-med oppgaven eller når de skulle ønske selv.
+om de automatiske testene har kjørt grønnt. På denne måten kan integrere mye av wastet inn i pipelinen, da blir det mindre avhengihet
+av ett test-team, som betyr mindre overleveringer og en mer effektiv flyt.
+
+Man kan også oppdatere med en mer begrenset oppgavestørrelse så fort man er ferdig
+med oppgaven eller når de skulle ønske selv, som gjør det mye mindre skadelig å rulle tilbake endringer om noe kritisk skulle oppstå.
 
 Dette vil spare masse tid og penger for bedriften, det vil være en mye høyere terskel for kvalitets-sikring når vi kan ha kontroll på koden
 i workflowen. Skulle bugs eventuelt oppstå så kan men lett rulle tilbake og fikse problemet, og release det igjen med en gang.
 Brukere vil få en mye bedre opplevelse, med oftere forbedret funksjonalitet i løsningen.
 
-Ved å automatisere tester og legge opp en bedre arbeidsflyt, vil vi fjerne den falske tryggheten man kan få av manuelle tester.
-Det vil skape en mye bedre flyt i prosessen, hvor resultatet har fjernet masse waste rundt venting på teams, færre context switches og
-mindre venting på delvis fullført arbeid. Det vil overføre mye av OPS ansvaret til utviklerene, som fører til færre overleveringer
-av koden fra start til slutt.
+
 
 
 
@@ -38,9 +39,14 @@ av koden fra start til slutt.
    og hvilke gevinster kan man få ved at team han ansvar for både drift- og utvikling?
 
 3:
+Ved å automatisere tester og legge opp en bedre arbeidsflyt, vil vi fjerne den falske tryggheten man kan få av manuelle tester.
+Det vil skape en mye bedre flyt i prosessen, hvor resultatet har fjernet masse waste rundt venting på teams, færre context switches og
+mindre venting på delvis fullført arbeid. Det vil overføre mye av OPS ansvaret til utviklerene, som fører til færre overleveringer
+av koden fra start til slutt.
+
 Om utvikleren har ansvar for både drift og utvikling vil man fjerne skillet mellom disse. Tid er veldig verdifult, og det å ha unødvendige 
-overleveringer vil føre til mye bortkastet tid. Ett team kan sitte å måtte vente på at de andre må bli ferdig med en oppgave og lignende.
-Det å ha ansvar på hele prosessen fra start til slutt ender da med å jobbe ekstremt effektivt.
+overleveringer vil føre til mye bortkastet tid. Ett team kan sitte å måtte vente på at de andre må bli ferdig med en oppgave som er ekstremt wasteful.
+Det å ha ansvar for hele prosessen fra start til slutt ender man da med å jobbe ekstremt effektivt.
 
 
 4: Å release kode ofte kan også by på utfordringer. Beskriv hvilke- og hvordan vi kan bruke DevOps prinsipper til å redusere eller
@@ -50,6 +56,8 @@ Det å ha ansvar på hele prosessen fra start til slutt ender da med å jobbe ek
 få overleveringer av koden, god struktur på arbeidsflyten og ett godt versions kontroll system satt opp som tar seg av bracnhes og workkflow.
 Det er viktig at release branchen alltid er i en fungerende state, så det må være ett kvalitets system med automatiske tester og pull requester
 som fjerner muligheten til å pushe ødelagt kode så godt som mulig til release.
+Man kan også bruke feedback prinsippet til å sikre koden, hvor man kan ha metrics, med alarmer som går av når kritiske feil oppstår og
+bare lansere oppdateringer til en liten brukergruppe først før man deployer til alle.
 
 ## Del 2
 
@@ -65,7 +73,7 @@ Github Repo -> Settings -> Branches
 -> Under "Protect matching branches" så sjekker du av kommende bokser:
 - [X] Require Pull Request before Merging
 - [X] Require Approvals 
--> Required number of approvals before merging: > 0
+-> Required number of approvals before merging > 0
 - [X] Require status checks to pass before merging
 
 
@@ -87,7 +95,7 @@ Gikk ut ifra at jeg skulle oppgradere til java 11, ikke gå tilbake til eldre Ja
 Når jeg kjørte docker imaget med multi stage så kjørte docker workflowen.
 
 Men når jeg skulle rydde opp ved å fjerne setup av SDK og build med maven så sluttet workflowen å kjøre grunnet "ikke finner file"
-Jeg spesifiserte riktig path i docker filen og workflow filen , og da kjører docker
+Jeg spesifiserte riktig path i docker filen og workflow filen, og da kjører docker
 workflowen mye ryddigere uten unødvendige steg.
 
 
@@ -98,10 +106,11 @@ Jeg lagde en ny workflow for å pushe til ECR istedenfor å slette docker workfl
 Derfor om de noensinne vil bruke docker hub igjen så kan de enkelt bytte tilbake/Legge til workflowen.
 Se workflows/ecr.yml for push til ECR.
 
-Så endret jeg slik at docker kan kjøres manuelt om ønskelig, men den pusher bare til ECR under push og pull til main
+Så endret jeg slik at docker-hub kan kjøres manuelt om ønskelig, men den pusher bare til ECR under push og pull til main
 
 For å pushe til et annet ECR repo, trengs det bare å gå til "ECR" på AWS, Gå inn på ditt Repo,
-Der står det build commands for å replace bunnen av ecr.yml
+Der står det build commands for å replace bunnen av ecr.yml,
+videre må du legge til aws credentials i rep secrets
 
 Videre har jeg lagt til commit hash som tag til ecr.
 
@@ -120,16 +129,16 @@ De relevante metricene heter:
 
 ### Oppgave 1
 
-Since we dont have a backend, we are using a local terraform.state file.
-Which means that when the VM in the workflow runs the code, it will create
-a new state file everytime, and then also try to create the bucket, since the terraform state
-is not aware of the existing bucket.
+Siden det ikke var en backend for state fila, lagret den seg lokalt, som betyr at når VMen i workflowen kjører terraform koden,
+så vil den lage en ny state fil hver gang, siden VMen blir cleaned mellom hver.
+Siden den da ikke har noen state fil, så vil den prøve å oprette all infrastrukturen på nytt, men det vil feile siden det eksisterer.
 
-This got fixed by adding a backend in the provider.tf that reffers to existing bucket,
-then importing the bucket with terraform CLI: 
+Jeg fikset dette med å legge til en backend i provider.tf, som reffererer til eksisterende bucket, deretter importere bucketed
+med terraform CLI: 
 
 ```
 terraform import aws_s3_bucket.analyticsbucket analytics-1023
 ```
-Now the state file is saved in a bucket and keeps track of the state of all our components for us, so 
-it won't try to create duplicates of the elements in the infrastructure.
+Da blir state filen lagret i en bucket, og holder styr på alle infrstruktur komponentene for oss, da vil den ikke
+prøve å opprette duplikater av elementene lenge.
+
